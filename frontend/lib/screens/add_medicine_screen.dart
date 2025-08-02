@@ -34,7 +34,7 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
       dosage: _dosageController.text,
       time: _timeController.text,
     );
-    final explanation = await ApiService.explainMedicine(medicine.name);
+    final explanation = await ApiService.getMedicineExplanation(medicine.name);
     setState(() => _loading = false);
     if (!mounted) return;
     Navigator.push(
