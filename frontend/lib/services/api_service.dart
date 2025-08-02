@@ -3,7 +3,13 @@ import 'package:http/http.dart' as http;
 import '../utils/constants.dart';
 
 class ApiService {
-  static Future<String> explainMedicine(String medicine) async {
+  /// Fetches an AI generated explanation for [medicine].
+  ///
+  /// Renamed from `explainMedicine` to better reflect the intent of the
+  /// operation. Keeping the old signature would make the call site less
+  /// descriptive. This method posts the medicine name to the backend and
+  /// returns the explanation text on success.
+  static Future<String> getMedicineExplanation(String medicine) async {
     final url = Uri.parse('$baseUrl/gpt/explain');
     final response = await http.post(
       url,
